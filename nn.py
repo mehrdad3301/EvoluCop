@@ -21,7 +21,7 @@ class NeuralNetwork():
     def forward(self, x):
         
         # x example: np.array([[0.1], [0.2], [0.3]])
-        a = x.reshape(-1, 1) 
+        a = x 
         for w, b in zip(self.weights, self.biases) :
             a = (np.matmul(w, a) + b)
 
