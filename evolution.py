@@ -3,7 +3,7 @@ import numpy as np
 from copy import deepcopy
 
 from recombination import crossover, mutate
-from selection import roulette_wheel, q_tournament
+from selection import rank_based_selection, roulette_wheel, q_tournament, top_k 
 
 class Evolution():
 
@@ -22,9 +22,8 @@ class Evolution():
             players_copy = deepcopy(prev_players)
             parents = q_tournament(players_copy, num_players, 10)
             children = crossover(parents)
-            children = parents
-            children = [mutate(c, 0.5, 0.7, 1) for c in children]
+            children = [mutate(c, 0.3, 0.6, 0.2) for c in children]
             return children
 
     def next_population_selection(self, players, num_players):
-        return roulette_wheel(players, num_players, False)
+        return rank_based_selection(players, num_players) 
