@@ -105,11 +105,6 @@ class Player():
     
     def think(self, mode, box_lists, agent_position, velocity):
 
-        # mode example: 'helicopter'
-        # box_lists: an array of `BoxList` objects
-        # agent_position example: [600, 250]
-        # velocity example: 7
-        
         w, h = CONFIG['WIDTH'], CONFIG['HEIGHT']
         x, y = agent_position[0], agent_position[1]
 
@@ -125,7 +120,7 @@ class Player():
             input = np.array([0.5, 0.5, 0.5, 0.5, 0])
 
         input = input.reshape(-1, 1)
-        return 1 if self.nn.forward(input) >= 0 else -1
+        return 1 if self.nn.forward(input) >= 0.5 else -1
 
     def collision_detection(self, mode, box_lists, camera):
         if mode == 'helicopter':
