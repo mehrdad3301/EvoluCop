@@ -2,7 +2,7 @@ from player import Player
 import numpy as np
 import copy
 
-from recombination import crossover
+from recombination import crossover, mutate
 
 class Evolution():
 
@@ -16,25 +16,6 @@ class Evolution():
         for i, p in enumerate(players):
             p.fitness = delta_xs[i]
 
-    def mutate(self, child, pw, pb, var):
-        """
-        mutate takes a child, which is instance of class Player, 
-        and adds gaussian noise to weights and biases given 
-        probabilities `pw` and `pb`. 
-        """
-
-        net = child.nn
-        for k in range(len(child.nn.weights)):
-            if np.random.rand() < pw:
-                net.weights[k] += np.random.normal(0,
-                                                   var, size=net.weights[k].shape)
-
-        for k in range(len(child.nn.biases)):
-            if np.random.rand() < pb:
-                net.biases[k] += np.random.normal(0,
-                                                  var, size=net.biases[k].shape)
-
-        return child
 
     def generate_new_population(self, num_players, prev_players=None):
 
@@ -45,7 +26,7 @@ class Evolution():
             players_copy = self.copy_(prev_players)
             parents = self.roulette_wheel(players_copy, num_players)
             children = crossover(parents)
-            children = [self.mutate(c, 0.5, 0.7, 1) for c in children]
+            children = [mutate(c, 0.5, 0.7, 1) for c in children]
             return children
 
     def next_population_selection(self, players, num_players):

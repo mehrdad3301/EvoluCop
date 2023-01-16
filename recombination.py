@@ -22,3 +22,24 @@ def crossover(players):
         cross_biases(p1, p2)
 
     return players
+
+
+def mutate(child, pw, pb, var):
+    """
+    mutate takes a child, which is instance of class Player, 
+    and adds gaussian noise to weights and biases given 
+    probabilities `pw` and `pb`. 
+    """
+
+    net = child.nn
+    for k in range(len(child.nn.weights)):
+        if np.random.rand() < pw:
+            net.weights[k] += np.random.normal(0,
+                                               var, size=net.weights[k].shape)
+
+    for k in range(len(child.nn.biases)):
+        if np.random.rand() < pb:
+            net.biases[k] += np.random.normal(0,
+                                              var, size=net.biases[k].shape)
+
+    return child
