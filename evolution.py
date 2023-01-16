@@ -1,9 +1,8 @@
-from hashlib import new
 from player import Player
 import numpy as np
-from config import CONFIG
 import copy
 
+from recombination import crossover
 
 class Evolution():
 
@@ -45,7 +44,7 @@ class Evolution():
         else:
             players_copy = self.copy_(prev_players)
             parents = self.roulette_wheel(players_copy, num_players)
-            children = self.crossover(parents)
+            children = crossover(parents)
             children = [self.mutate(c, 0.5, 0.7, 1) for c in children]
             return children
 
@@ -76,25 +75,4 @@ class Evolution():
         return self.copy_(np.random.choice(players, size=num_players, 
                                                     p=fitness, replace=False))
 
-    def crossover(self, players):
-
-        def cross_weights(p1, p2):
-            n1, n2 = p1.nn, p2.nn
-            for i in range(len(n1.weights)):
-                temp = n1.weights[i][:, ::2].copy()
-                n1.weights[i][:, ::2] = n2.weights[i][:, ::2]
-                n2.weights[i][:, ::2] = temp
-
-        def cross_biases(p1, p2):
-            n1, n2 = p1.nn, p2.nn
-            for i in range(len(n1.biases)):
-                temp = n1.biases[i][::2].copy()
-                n1.biases[i][::2] = n2.biases[i][::2]
-                n2.biases[i][::2] = temp
-
-        np.random.shuffle(players)
-        for p1, p2 in zip(players[::2], players[1::2]):
-            cross_weights(p1, p2)
-            cross_biases(p1, p2)
-
-        return players
+    
