@@ -22,6 +22,11 @@ class Player():
         self.nn = NeuralNetwork(layer_sizes)
         self.fitness = 0  # fitness of agent
 
+    def __lt__(self, p) : 
+        if self.fitness < p.fitness : 
+            return True 
+        return False
+
     def move(self, box_lists, camera, events=None):
 
         if len(box_lists) != 0:
@@ -120,7 +125,7 @@ class Player():
             input = np.array([0.5, 0.5, 0.5, 0.5, 0])
 
         input = input.reshape(-1, 1)
-        return self.nn.forward(input)
+        return 1 if self.nn.forward(input) >= 0 else -1
 
     def collision_detection(self, mode, box_lists, camera):
         if mode == 'helicopter':
