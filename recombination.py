@@ -1,6 +1,12 @@
 import numpy as np 
 
 def crossover(players):
+    """
+    crossover shuffles players, it then pairs them 
+    and perform crossover. the scheme used in cross over is simple. 
+    it replaces outgoing weights of neuron in paired chromosomes to 
+    do crossover. 
+    """
 
     def cross_weights(p1, p2):
         n1, n2 = p1.nn, p2.nn
