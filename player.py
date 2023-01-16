@@ -110,10 +110,10 @@ class Player():
 
         if len(box_lists) >= 2 : 
             b_1, b_2 = box_lists[0], box_lists[1]
-            v_d_1 = y - b_1.gap_mid / h 
-            v_d_2 = y - b_2.gap_mid / h  
-            h_d_1 = b_1.x - x / w 
-            h_d_2 = b_2.x - x / w 
+            v_d_1 = (y - b_1.gap_mid) / h 
+            v_d_2 = (y - b_2.gap_mid) / h  
+            h_d_1 = (b_1.x - x) / w 
+            h_d_2 = (b_2.x - x) / w 
             v = velocity / 10
             input = np.array([v_d_1, v_d_2, h_d_1, h_d_2, v])
         else : 
