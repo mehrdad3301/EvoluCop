@@ -13,12 +13,16 @@ class Evolution():
     def copy_(self, players):
         return [copy.deepcopy(p) for p in players]
 
-    # calculate fitness of players
     def calculate_fitness(self, players, delta_xs):
         for i, p in enumerate(players):
             p.fitness = delta_xs[i]
 
     def mutate(self, child, pw, pb, var):
+        """
+        mutate takes a child, which is instance of class Player, 
+        and adds gaussian noise to weights and biases given 
+        probabilities `pw` and `pb`. 
+        """
 
         net = child.nn
         for k in range(len(child.nn.weights)):
@@ -71,9 +75,6 @@ class Evolution():
         fitness = fitness / np.sum(fitness)
         return self.copy_(np.random.choice(players, size=num_players, 
                                                     p=fitness, replace=False))
-
-    def sus(self, players):
-        pass
 
     def crossover(self, players):
 
