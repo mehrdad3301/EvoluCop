@@ -1,6 +1,6 @@
 import numpy as np 
 
-def crossover(players):
+def crossover(players, p=0.6):
     """
     crossover shuffles players, it then pairs them 
     and perform crossover. the scheme used in cross over is simple. 
@@ -24,8 +24,9 @@ def crossover(players):
 
     np.random.shuffle(players)
     for p1, p2 in zip(players[::2], players[1::2]):
-        cross_weights(p1, p2)
-        cross_biases(p1, p2)
+        if np.random.rand() < p :
+            cross_weights(p1, p2)
+            cross_biases(p1, p2)
 
     return players
 
