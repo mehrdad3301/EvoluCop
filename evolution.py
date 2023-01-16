@@ -10,7 +10,7 @@ class Evolution():
     def __init__(self, mode):
         self.mode = mode
 
-    def copy_players(self, players):
+    def copy_(self, players):
         return [copy.deepcopy(p) for p in players]
 
     # calculate fitness of players
@@ -39,7 +39,7 @@ class Evolution():
             return [Player(self.mode) for _ in range(num_players)]
 
         else:
-            players_copy = self.copy_players(prev_players)
+            players_copy = self.copy_(prev_players)
             parents = self.roulette_wheel(players_copy, num_players)
             children = self.crossover(parents)
             children = [self.mutate(c, 0.5, 0.7, 1) for c in children]
@@ -55,7 +55,7 @@ class Evolution():
         players.sort()
         p = np.arange(len(players)) ** 2
         p = p / p.sum()
-        return self.copy_players(np.random.choice(players, size=k, p=p))
+        return self.copy_(np.random.choice(players, size=k, p=p))
 
     def q_tournament(self, players, num_players, q):
         new_players = []
@@ -69,7 +69,7 @@ class Evolution():
         fitness = [p.fitness for p in players]
         print(sorted(fitness))
         fitness = fitness / np.sum(fitness)
-        return self.copy_players(np.random.choice(players, size=num_players, 
+        return self.copy_(np.random.choice(players, size=num_players, 
                                                     p=fitness, replace=False))
 
     def sus(self, players):
