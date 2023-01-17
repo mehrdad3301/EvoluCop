@@ -8,7 +8,7 @@ def rank_based_selection(players, k):
     players.sort()
     p = np.arange(len(players)) ** 2
     p = p / p.sum()
-    return deepcopy(np.random.choice(players, size=k, p=p))
+    return deepcopy(list(np.random.choice(players, size=k, p=p)))
 
 def q_tournament(players, num_players, q):
     new_players = []
