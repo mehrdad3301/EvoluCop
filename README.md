@@ -5,3 +5,4 @@ Evolocop is an evolutionary agent that masters a simplistic helicopter game. It 
 ## How it works
 
 ## Acknowledgements 
+This was part of a course on Computational Intelligence at Amirkabir university of Technology. I was only responsible for network architecture and implementation of evolutionary algorithms. Game logic and GUI were implemented [here](https://github.com/HosseinZaredar/EvolutionaryGames). There are TODOs in place for you to fill out and make your own Evolocop much like I did!
