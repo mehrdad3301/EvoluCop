@@ -95,11 +95,11 @@ class Player():
 
         layer_sizes = None
         if mode == 'gravity':
-            layer_sizes = [6, 20, 1]
+            layer_sizes = [5, 20, 1]
         elif mode == 'helicopter':
             layer_sizes = [5, 20, 1]
         elif mode == 'thrust':
-            layer_sizes = [6, 20, 1]
+            layer_sizes = [5, 20, 1]
         return layer_sizes
 
     
