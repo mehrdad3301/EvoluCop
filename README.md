@@ -10,9 +10,18 @@ Each helicopter is associated with a three layer neural net. The network takes d
 - Each child is mutated by adding gaussian noise to weight matrices (you must tune the hyperparameters for this step) 
 - Game is run and next generation is selected (I used roulette wheel selection)
 
+<p align="center"> 
+    <img src="./screenshots/demo.gif" width=400 height=250>
+</p>
+
+
 ## Other modes 
 Other modes includes `gravity` and `thrust`. Everything's the same except the GUI. You can even use helicopter checkpoints. 
 
+<p align="center"> 
+    <img src="./screenshots/gravity.png" width=400 height=250> 
+    <img src="./screenshots/thrust.png" width=400 height=250> 
+</p>
 
 ## Instructions
 ```
