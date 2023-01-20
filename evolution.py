@@ -1,5 +1,4 @@
 from player import Player
-import numpy as np
 from copy import deepcopy
 
 from recombination import crossover, mutate
@@ -26,4 +25,11 @@ class Evolution():
             return children
 
     def next_population_selection(self, players, num_players):
-        return rank_based_selection(players, num_players) 
+        next_gen = rank_based_selection(players, num_players)
+        self.save_generation(next_gen)
+        return next_gen
+
+    def save_generation(self, players) : 
+        fitness = [p.fitness for p in players] 
+        with open('fitness_history', 'a') as f: 
+            f.write(' '.join([str(x) for x in fitness]) + '\n')
