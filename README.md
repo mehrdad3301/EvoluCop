@@ -34,5 +34,12 @@ python game.py [OPTIONS]
 --play [False,True] default False
     you can play the game if set to True 
 ```
+
+## Shortcuts 
+- Press `d` to double evolution speed 
+- Press `s` to only see one helicopter in evolution 
+- Press Esc to exit evolution 
+- Press `f` to see frame rate
+
 ## Acknowledgements 
 This was part of a course on Computational Intelligence at Amirkabir university of Technology. I was only responsible for network architecture and implementation of evolutionary algorithms. Game logic and GUI were implemented [here](https://github.com/HosseinZaredar/EvolutionaryGames). There are TODOs in place for you to fill out and make your own Evolocop much like I did!
