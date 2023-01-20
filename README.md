@@ -1,6 +1,11 @@
 # Evolucop
 Evolocop is an evolutionary agent that masters a simplistic helicopter game. It uses a three layers neural net, to choose wether to push the helicopter. The challenge is in training the net. There are many ways to train a network that can solve this effectively. As the name suggests Evolocop uses Evolution. See section below for how it works. 
 
+## Game play
+**takes some time to load!**
+<p align="center"> 
+    <img src="./screenshots/demo.gif" > 
+</p>
 
 ## How it works
 Each helicopter is associated with a three layer neural net. The network takes distance between current position of the agent and the next two middle points and returns a number between 0 and 1. If it's higher than 0.5 the space bar is pushed and helicopter moves up. Evolution works following evolution paradigm: 
@@ -9,11 +14,6 @@ Each helicopter is associated with a three layer neural net. The network takes d
 - Crossover is performed by intertwining the columns of weight matrices
 - Each child is mutated by adding gaussian noise to weight matrices (you must tune the hyperparameters for this step) 
 - Game is run and next generation is selected (I used roulette wheel selection)
-
-<p align="center"> 
-    <img src="./screenshots/demo.gif" > 
-</p>
-
 
 ## Other modes 
 Other modes includes `gravity` and `thrust`. Everything's the same except the GUI. You can even use helicopter checkpoints. 
