@@ -10,7 +10,9 @@ Each helicopter is associated with a three layer neural net. The network takes d
 - Each child is mutated by adding gaussian noise to weight matrices (you must tune the hyperparameters for this step) 
 - Game is run and next generation is selected (I used roulette wheel selection)
 
-<center> https://user-images.githubusercontent.com/70322560/213672806-23de5578-606a-4b39-9db3-9589b4519073.mp4 </center> 
+<center> 
+https://user-images.githubusercontent.com/70322560/213672806-23de5578-606a-4b39-9db3-9589b4519073.mp4 
+</center> 
 
 
 
